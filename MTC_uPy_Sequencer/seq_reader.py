@@ -23,7 +23,7 @@ class sequence():
         # Index the seqence so that a line can be recalled very fast
         for line in sequenceFile:
             if strIsInt(line[0]): # If first charachter is an int it means it is a step
-                print(line)
+                #print(line)
                 sequence[seqStep] = lastLine
                 lastLine = self.dataTxt.tell()
                 seqStep += 1

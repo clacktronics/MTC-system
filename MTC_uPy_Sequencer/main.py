@@ -60,13 +60,40 @@ if __name__ == "__main__":
 
 
     start = pyb.millis()
+    difference = 0
+
+
     last = 0
+    last2 = 0
+    m = 1
+
     while True:
-        elapsed = pyb.millis() - start
-        if elapsed % 225 == 0 and elapsed != 0 and last != elapsed:
-            i = int(elapsed / 225)
-            print('[%d] %s' % (i, sequence.getStep(i).strip(' ')))
-            #out = [int(x) for x in sequence.getStep(i).strip().split(' ')]
-            #print(out)
-            #setPWM(out)
-            last = elapsed
+
+        elapsed = (pyb.millis() - start) + difference
+
+        mtc.getMs()
+        print(elapsed - last)
+        last = elapsed
+
+
+
+        # if elapsed % 225 == 0 and elapsed != 0 and last != elapsed:
+        #     i = int(elapsed / 225)
+        #     #print('[%d] %s' % (i, sequence.getStep(i).strip(' ')))
+        #     #out = [int(x) for x in sequence.getStep(i).strip().split(' ')]
+        #     #print(out)
+        #     #setPWM(out)
+        #
+        #
+        #     #print(pyb.millis()-last2)
+        #     last2=pyb.millis()
+        #
+        #     m += 1
+        #     if m == 20:
+        #         difference += int((mtc.getMs() - elapsed)/100)*100
+        #         m = 1
+        #     print((elapsed/1000), difference)
+        #     #print(int(mtc.getMs()/1000),int(elapsed/1000),difference)
+        #
+        #
+        #     last = elapsed
