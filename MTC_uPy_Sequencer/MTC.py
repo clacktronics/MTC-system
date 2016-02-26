@@ -41,7 +41,7 @@ class MTC():
 
               if ord(data) == 241:              # if Byte for quater frame message
 
-                  try: mes = int(ord(self.uart1.read(1)))        # Read next byte
+                  try: mes = ord(self.uart1.read(1))        # Read next byte
                   except: continue
 
                   piece = mes >> 4             # Get which part of the message it is (e.g seconds mins)

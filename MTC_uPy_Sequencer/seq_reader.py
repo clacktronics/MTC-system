@@ -3,6 +3,7 @@ class sequence():
     def __init__(self):
         self.dataTxt = open("sequence.txt")
         self.sequence = self.getSequence(self.dataTxt)
+        self.length = len(self.sequence)
 
     def getStep(self, stepNumber):
         self.dataTxt.seek(self.sequence[stepNumber])
