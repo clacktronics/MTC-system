@@ -16,14 +16,13 @@ class MTC():
       self.clock['hours'] = ((self.message[7] & 1) << 4) + self.message[6] # 2 half bytes 0rrh hhhh the msb has to be masked as it contains the mode
       self.clock['mode'] = ((self.message[7] & 6) >> 1) # get the fps mode by masking 0rrh with 0110 (6)
 
-  def getMs(self):
+  def getS(self):
 
-      self.readFrame()
       mins = ((self.clock['hours'] * 60) + self.clock['mins'])
       seconds = (mins * 60) + self.clock['seconds']
       frames = (seconds * 25) + self.clock['frames']
       milliseconds = frames * 40
-      return milliseconds
+      return milliseconds / 1000.
 
   def readFrame(self):
 
@@ -39,7 +38,7 @@ class MTC():
 
               if ord(data) == 241:              # if Byte for quater frame message
 
-                  try: mes = ord(self.uart1.read(1))        # Read next byte
+                  try: mes = int(ord(self.uart1.read(1)))        # Read next byte
                   except: continue
 
                   piece = mes >> 4             # Get which part of the message it is (e.g seconds mins)
@@ -55,7 +54,9 @@ class MTC():
       #self.uart1.deinit()
       return self.clock
 
+
 if __name__ == "__main__":
-    mtc = MTC()
-    while True:
-        print mtc.readFrame()
+	mtc = MTC()
+	while True:
+		print mtc.clock
+		mtc.readFrame()
