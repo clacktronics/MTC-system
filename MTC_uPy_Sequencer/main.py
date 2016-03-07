@@ -67,9 +67,13 @@ if __name__ == "__main__":
     last2 = 0
     m = 1
 
-    while True:
+    for i in range(sequence.length-4,sequence.length):
+        print(i, sequence.getStep(i))
 
-        elapsed = (pyb.millis() - start) + difference
+    #while True:
+
+
+        # elapsed = (pyb.millis() - start) + difference
         #
         # #print mtc.getMs()
         # #print(elapsed - last)
@@ -77,24 +81,24 @@ if __name__ == "__main__":
 
 
 
-        if elapsed % 225 == 0 and elapsed != 0 and last != elapsed:
-            i = int(elapsed / 225)
-            # if i < sequence.length:
-            #     print('[%d] %s' % (i, sequence.getStep(i).strip(' ')))
-            # else:
-            #     print('End of sequence')
-            #out = [int(x) for x in sequence.getStep(i).strip().split(' ')]
-            #print(i,sequence.getStep(i))
-            #setPWM(out)
-
-
-            #print(pyb.millis()-last2)
-            last2=pyb.millis()
-
-            m += 1
-            if m == 20:
-                difference += int((mtc.getMs() - elapsed)/100)*100
-                m = 1
-            #print(elapsed, mtc.readFrame())
-            print(int(mtc.getMs()/1000),int(elapsed/1000),difference)
-            last = elapsed
+        # if elapsed % 225 == 0 and elapsed != 0 and last != elapsed:
+        #     i = int(elapsed / 225)
+        #     # if i < sequence.length:
+        #     #     print('[%d] %s' % (i, sequence.getStep(i).strip(' ')))
+        #     # else:
+        #     #     print('End of sequence')
+        #     #out = [int(x) for x in sequence.getStep(i).strip().split(' ')]
+        #     print(i,sequence.getStep(i))
+        #     #setPWM(out)
+        #
+        #
+        #     #print(pyb.millis()-last2)
+        #     last2=pyb.millis()
+        #
+        #     m += 1
+        #     if m == 20:
+        #         difference += int((mtc.getMs() - elapsed)/100)*100
+        #         m = 1
+        #     #print(elapsed, mtc.readFrame())
+        #     #print(int(mtc.getMs()/1000),int(elapsed/1000),difference)
+        #     last = elapsed

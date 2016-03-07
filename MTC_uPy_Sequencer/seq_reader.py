@@ -28,6 +28,6 @@ class sequence():
                 sequence[seqStep] = lastLine
                 lastLine = self.dataTxt.tell()
                 seqStep += 1
-            elif sequence == {}: # caputre line before first line
+            else: # caputre line before first line
                 lastLine = self.dataTxt.tell()
         return sequence
